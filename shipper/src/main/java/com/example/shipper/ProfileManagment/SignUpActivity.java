@@ -13,7 +13,6 @@ import android.graphics.Matrix;
 import android.icu.text.SimpleDateFormat;
 import android.media.ExifInterface;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -26,7 +25,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -83,7 +81,7 @@ public class SignUpActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private StorageReference storageReference;
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -160,7 +158,7 @@ public class SignUpActivity extends AppCompatActivity {
         } else {
 
             Map<String, Object> new_user = new HashMap<String, Object>();
-            new_user.put("shipper_info", new User("gallottino", name, surname
+            new_user.put("shipper_info", new User(mail, name, surname
                     , mail, phone, null, null));
             new_user.put("available", true);
             DatabaseReference myRef = database.getReference(SHIPPERS_PATH + "/" + UID);
@@ -209,7 +207,7 @@ public class SignUpActivity extends AppCompatActivity {
         return true;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
+    
     private void editPhoto() {
         AlertDialog alertDialog = new AlertDialog.Builder(SignUpActivity.this, R.style.AlertDialogStyle).create();
         LayoutInflater factory = LayoutInflater.from(SignUpActivity.this);
@@ -246,7 +244,7 @@ public class SignUpActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
+    
     private void cameraIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
@@ -281,10 +279,13 @@ public class SignUpActivity extends AppCompatActivity {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
+
     private File createImageFile() throws IOException {
         // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String timeStamp = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            timeStamp = new SimpleDateFormat("ddMMyyyy_HHmmss").format(new Date());
+        }
         String imageFileName = "IMG_" + timeStamp + "_";
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image = new File(storageDir + File.separator +
@@ -407,7 +408,7 @@ public class SignUpActivity extends AppCompatActivity {
         savedInstanceState.putBoolean(DialogOpen, dialog_open);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
+    
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
