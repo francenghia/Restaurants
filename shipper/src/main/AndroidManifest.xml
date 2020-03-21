@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.restaurant">
+    package="com.example.shipper">
 
     <application
         android:allowBackup="true"
@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ProfileManagment.EditPasswordActivity"></activity>
+        <activity android:name=".ProfileManagment.EditProfileActivity" />
+        <activity android:name=".ProfileManagment.SignUpActivity" />
+        <activity android:name=".Activities.FragmentManager" />
+        <activity android:name=".Activities.SplashActivity" />
+        <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,2 +1,1 @@
-include ':shipper', ':common', ':customer', ':restaurants'
-rootProject.name='Restaurant'
+include ':shipper', ':common', ':customer', ':lib', ':restaurants'
