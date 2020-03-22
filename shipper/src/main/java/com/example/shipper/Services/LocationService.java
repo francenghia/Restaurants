@@ -69,7 +69,9 @@ public class LocationService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        return super.onStartCommand(intent, flags, startId);
+        Log.d(TAG, "onStartCommand: called.");
+        getLocation();
+        return START_NOT_STICKY;
     }
 
     private void getLocation() {
@@ -107,7 +109,7 @@ public class LocationService extends Service {
     }
 
     private void updateLocationDatabase(double latitude, double longitude) {
-        mDatabaseRef.child(SHIPPERS_PATH).child(ROOT_UID).child("rider_pos").child("latitude").setValue(latitude);
-        mDatabaseRef.child(SHIPPERS_PATH).child(ROOT_UID).child("rider_pos").child("longitude").setValue(longitude);
+        mDatabaseRef.child(SHIPPERS_PATH).child(ROOT_UID).child("shipper_pos").child("latitude").setValue(latitude);
+        mDatabaseRef.child(SHIPPERS_PATH).child(ROOT_UID).child("shipper_pos").child("longitude").setValue(longitude);
     }
 }
