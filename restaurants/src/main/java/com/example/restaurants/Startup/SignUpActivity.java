@@ -7,7 +7,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.icu.text.SimpleDateFormat;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -35,6 +34,7 @@ import com.example.common.StarItem;
 import com.example.restaurants.R;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.api.net.PlacesClient;
@@ -49,8 +49,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
+import java.sql.Timestamp;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -118,6 +118,12 @@ public class SignUpActivity extends AppCompatActivity {
                         Toast.makeText(SignUpActivity.this, "Registration failed. Try again", Toast.LENGTH_LONG).show();
                         progressDialog.dismiss();
                     }
+                }).addOnFailureListener(this, new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(SignUpActivity.this, "Error : " + e.getMessage(), Toast.LENGTH_LONG).show();
+                        Log.d("Error : " , e.getMessage());
+                    }
                 });
             } else {
                 Toast.makeText(SignUpActivity.this, errMsg, Toast.LENGTH_LONG).show();
@@ -163,7 +169,7 @@ public class SignUpActivity extends AppCompatActivity {
 
             if (photoFile != null) {
                 Uri photoURI = FileProvider.getUriForFile(this,
-                        "com.mad.appetit",
+                        "com.example.restaurants",
                         photoFile);
 
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
@@ -187,11 +193,9 @@ public class SignUpActivity extends AppCompatActivity {
 
     private File createImageFile() {
         // Create an image file name
-        String timeStamp = null;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-            timeStamp = new SimpleDateFormat("ddMMyyyyMM_HHmmss").format(new Date());
-        }
-        String imageFileName = "IMG_" + timeStamp + "_";
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+
+        String imageFileName = "IMG_" + timestamp.getTime() + "_";
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image = new File(storageDir + File.separator +
                 imageFileName + /* prefix */
