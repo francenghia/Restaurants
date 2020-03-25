@@ -17,7 +17,6 @@
             android:layout_height="match_parent">
 
             <ImageView
-
                 android:id="@+id/img_profile"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
