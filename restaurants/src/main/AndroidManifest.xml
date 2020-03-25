@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,9 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ManagerActivities.FragmentManager"></activity>
-        <activity android:name=".Startup.SignUpActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize"/>
+        <activity android:name=".ProfileActivities.UpdateProfileActivity" />
+        <activity android:name=".ProfileActivities.UpdatePasswordActivity" />
+        <activity android:name=".ManagerActivities.FragmentManager" />
+        <activity
+            android:name=".Startup.SignUpActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity android:name=".Startup.SplashScreenActivity" />
         <activity android:name=".Startup.MainActivity">
             <intent-filter>
