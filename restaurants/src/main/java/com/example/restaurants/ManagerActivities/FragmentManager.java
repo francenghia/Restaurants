@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.restaurants.FoodActivities.OfferFragment;
 import com.example.restaurants.HomeActivities.HomeFragment;
+import com.example.restaurants.HomeActivities.HomeOptionFragment;
 import com.example.restaurants.OrderActivities.OrderFragment;
 import com.example.restaurants.ProfileActivities.PagerProfileFragment;
 import com.example.restaurants.ProfileActivities.ProfileFragment;
@@ -35,7 +36,8 @@ public class FragmentManager extends AppCompatActivity
         ProfileFragment.OnFragmentInteractionListener,
         OfferFragment.OnFragmentInteractionListener,
         OrderFragment.OnFragmentInteractionListener,
-        PagerProfileFragment.OnFragmentInteractionListener{
+        PagerProfileFragment.OnFragmentInteractionListener,
+        HomeOptionFragment.OnFragmentInteractionListener{
 
     private View notificationBadge;
     private BottomNavigationView navigation;

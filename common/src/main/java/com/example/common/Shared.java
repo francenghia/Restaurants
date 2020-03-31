@@ -22,6 +22,13 @@ public class Shared {
     public static final String TimeOpen = "keyTimeOpen";
 
     /**
+     * Useful values key to retrieve data from activity (Intent)
+     */
+    public static final String EDIT_EXISTING_DISH = "DISH_NAME";
+    public static final String ORDER_ID = "ORDER_ID";
+    public static final String CUSTOMER_ID = "CUSTOMER_ID";
+    
+    /**
      * Permission values
      */
     public static final int PERMISSION_GALLERY_REQUEST = 1;
