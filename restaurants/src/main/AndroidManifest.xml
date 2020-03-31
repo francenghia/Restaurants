@@ -17,7 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".FoodActivities.EditOffer"></activity>
+        <activity android:name=".OrderActivities.MapsActivity"></activity>
+        <activity android:name=".FoodActivities.EditOffer" />
         <activity android:name=".ProfileActivities.UpdateProfileActivity" />
         <activity android:name=".ProfileActivities.UpdatePasswordActivity" />
         <activity android:name=".ManagerActivities.FragmentManager" />

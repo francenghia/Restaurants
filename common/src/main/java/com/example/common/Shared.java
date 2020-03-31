@@ -22,6 +22,14 @@ public class Shared {
     public static final String TimeOpen = "keyTimeOpen";
 
     /**
+     * Status of an order
+     */
+    public static final int STATUS_UNKNOWN = 1000;
+    public static final int STATUS_DELIVERING = 1001;
+    public static final int STATUS_DELIVERED = 1002;
+    public static final int STATUS_DISCARDED = 1003;
+
+    /**
      * Useful values key to retrieve data from activity (Intent)
      */
     public static final String EDIT_EXISTING_DISH = "DISH_NAME";

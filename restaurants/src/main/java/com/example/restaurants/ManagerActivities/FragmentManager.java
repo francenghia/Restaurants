@@ -13,8 +13,11 @@ import com.example.restaurants.FoodActivities.OfferFragment;
 import com.example.restaurants.HomeActivities.HomeFragment;
 import com.example.restaurants.HomeActivities.HomeOptionFragment;
 import com.example.restaurants.OrderActivities.OrderFragment;
+import com.example.restaurants.OrderActivities.PagerAdapterOrderFragment;
+import com.example.restaurants.OrderActivities.Reservation;
 import com.example.restaurants.ProfileActivities.PagerProfileFragment;
 import com.example.restaurants.ProfileActivities.ProfileFragment;
+import com.example.restaurants.ProfileActivities.RatingFragment;
 import com.example.restaurants.R;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
@@ -36,8 +39,11 @@ public class FragmentManager extends AppCompatActivity
         ProfileFragment.OnFragmentInteractionListener,
         OfferFragment.OnFragmentInteractionListener,
         OrderFragment.OnFragmentInteractionListener,
+        Reservation.OnFragmentInteractionListener,
         PagerProfileFragment.OnFragmentInteractionListener,
-        HomeOptionFragment.OnFragmentInteractionListener{
+        HomeOptionFragment.OnFragmentInteractionListener,
+        RatingFragment.OnFragmentInteractionListener,
+        PagerAdapterOrderFragment.OnFragmentInteractionListener{
 
     private View notificationBadge;
     private BottomNavigationView navigation;
@@ -78,8 +84,8 @@ public class FragmentManager extends AppCompatActivity
                 }
                 return true;
             case R.id.navigation_reservation:
-                if(!(getSupportFragmentManager().findFragmentById(R.id.fragment_container) instanceof OrderFragment)){
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new OrderFragment()).commit();
+                if(!(getSupportFragmentManager().findFragmentById(R.id.fragment_container) instanceof PagerAdapterOrderFragment)){
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PagerAdapterOrderFragment()).commit();
                 }
                 return true;
         }
