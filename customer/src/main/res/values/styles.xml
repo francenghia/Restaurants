@@ -8,4 +8,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.AlertDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="buttonBarNeutralButtonStyle">@style/ButtonStyle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/ButtonStyle</item>
+        <item name="buttonBarNegativeButtonStyle">@style/ButtonStyle</item>
+    </style>
+
+    <style name="ButtonStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:backgroundTint">@color/colorPrimary</item>
+        <item name="android:textAlignment">center</item>
+    </style>
 </resources>
