@@ -142,7 +142,7 @@ public class SignUpActivity extends AppCompatActivity {
                     Log.d("URL", "onComplete: Url: "+ downUri.toString());
 
                     Map<String, Object> new_user = new HashMap<>();
-                    new_user.put("customer_info",new User("malanti", name, surname
+                    new_user.put("customer_info",new User(mail, name, surname
                             , mail, phone, address, downUri.toString()));
                     myRef.updateChildren(new_user);
 
