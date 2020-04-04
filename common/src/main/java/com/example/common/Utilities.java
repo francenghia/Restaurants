@@ -3,16 +3,12 @@ package com.example.common;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import androidx.annotation.NonNull;
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 public class Utilities {
@@ -50,5 +46,20 @@ public class Utilities {
             minString = "0" + minValue;
 
         return hourString + ":" + minString;
+    }
+
+    public static Long getDate(int hour, int min, int mode, Long prev) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY, hour);
+        cal.set(Calendar.MINUTE, min);
+        cal.set(Calendar.SECOND,0);
+        cal.set(Calendar.MILLISECOND,0);
+        Date date = cal.getTime();
+
+        if (mode==1 && date.getTime()<prev){
+            cal.set(Calendar.DATE,cal.get(Calendar.DATE)+1);
+            date = cal.getTime();
+        }
+        return date.getTime();
     }
 }
