@@ -1,5 +1,7 @@
 package com.example.common;
 
+import java.util.HashMap;
+
 public class Shared {
 
     /**
@@ -57,6 +59,11 @@ public class Shared {
     public static final String RIDERS_ORDER = "/pending";
     public static final String CUSTOMER_PATH = "/customers";
     public static final String CUSTOMER_FAVOURITE_RESTAURANT_PATH = "/favourites";
+
+    /**
+     * List of orders for a customer
+     */
+    public static HashMap<String, Integer> orderToTrack = new HashMap<String, Integer>();
 
 
 }

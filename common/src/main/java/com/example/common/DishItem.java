@@ -17,6 +17,14 @@ public class DishItem {
         this.frequency = 0;
     }
 
+    public DishItem(String name, String desc, float price, int quantity, String photo) {
+        this.name = name;
+        this.desc = desc;
+        this.price = price;
+        this.quantity = quantity;
+        this.photo = photo;
+    }
+
     public DishItem(String name, String desc, float price, int quantity, String photo, int frequency) {
         this.name = name;
         this.desc = desc;
