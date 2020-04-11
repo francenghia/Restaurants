@@ -3,6 +3,7 @@ package com.example.restaurants.OrderActivities;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,7 +58,7 @@ class ListShipperAdapter extends RecyclerView.Adapter<ListShipperAdapter.MyViewH
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mDataset.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -123,6 +124,7 @@ public class ListShipperFragment extends Fragment {
         shipperList = new ArrayList<>();
 
         for(Map.Entry<Double,String> entry : distanceMap.entrySet()) {
+            Log.d("Shipper List :" , entry.getValue()+"/"+entry.getKey());
             shipperList.add(new ShipperInfo(shipperMap.get(entry.getValue()), entry.getValue(), entry.getKey()));
         }
     }
