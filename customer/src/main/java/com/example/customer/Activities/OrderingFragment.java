@@ -29,6 +29,7 @@ import com.firebase.ui.database.SnapshotParser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import static com.example.common.Shared.RESTAURATEUR_INFO;
@@ -225,7 +226,9 @@ public class OrderingFragment extends Fragment {
             TextView cart = menuItem.getActionView().findViewById(R.id.money);
             String snum = getQuantity(nums);
             String tot = calcoloTotale(prices, nums);
-            cart.setText(snum + " | " + tot + " vnd");
+            double amount = Double.parseDouble(tot);
+            DecimalFormat formatter = new DecimalFormat("#,###");
+            cart.setText(snum + " | " + formatter.format(amount).toString() + " vnd");
         }
         super.onPrepareOptionsMenu(menu);
     }

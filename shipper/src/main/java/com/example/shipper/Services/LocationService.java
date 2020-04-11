@@ -48,7 +48,7 @@ public class LocationService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-
+        Log.d(TAG, "onCreate: called.");
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
         if (Build.VERSION.SDK_INT >= 26) {

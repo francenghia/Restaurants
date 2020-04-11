@@ -98,7 +98,7 @@
             android:layout_marginStart="128dp"
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/colorPrimary"
-            android:text="đồng"
+            android:text="0.000"
             android:textColor="@android:color/white"
             app:layout_constraintStart_toEndOf="@+id/textView10"
             app:layout_constraintTop_toBottomOf="@+id/description" />
@@ -125,6 +125,17 @@
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="vnd"
+            app:layout_constraintBottom_toBottomOf="@+id/price"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.392"
+            app:layout_constraintStart_toEndOf="@+id/price"
+            app:layout_constraintTop_toTopOf="@+id/price" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -27,6 +27,7 @@ import androidx.core.content.FileProvider;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.common.DishItem;
+import com.example.common.PriceFormatNumberTextWatcher;
 import com.example.restaurants.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -39,6 +40,7 @@ import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -129,7 +131,9 @@ public class EditOffer extends AppCompatActivity {
                     ((EditText)findViewById(R.id.name)).setText(name);
                     ((EditText)findViewById(R.id.description)).setText(desc);
 
-                    priceButton.setText(Float.toString(priceValue));
+                    double amount = priceValue;
+                    DecimalFormat formatter = new DecimalFormat("#,###");
+                    priceButton.setText(formatter.format(amount));
                     quantButton.setText(Integer.toString(quantValue));
                 }
             }
@@ -186,36 +190,27 @@ public class EditOffer extends AppCompatActivity {
         LayoutInflater inflater = LayoutInflater.from(EditOffer.this);
         final View view = inflater.inflate(R.layout.price_dialog, null);
 
-        NumberPicker vnd = view.findViewById(R.id.vnd_picker);
-        NumberPicker cent = view.findViewById(R.id.thound_remainder_picker);
-
+        EditText priceNumberFormat = (EditText)view.findViewById(R.id.price);
         priceDialog.setView(view);
 
+        priceNumberFormat.addTextChangedListener(new PriceFormatNumberTextWatcher(priceNumberFormat));
+
+
         priceDialog.setButton(AlertDialog.BUTTON_POSITIVE,"OK", (dialog, which) -> {
-            float centValue = cent.getValue();
-            priceValue = vnd.getValue() + (centValue/1000);
-            priceButton.setText(Float.toString(priceValue));
+            String tempPrice = priceNumberFormat.getText().toString();
+            tempPrice = tempPrice.replace(".","");
+
+            double amount = Double.parseDouble(tempPrice);
+            DecimalFormat formatter = new DecimalFormat("#,###");
+            Log.d("Kiem tra:",formatter.format(amount));
+
+            priceValue = Float.parseFloat(tempPrice);
+            priceButton.setText(formatter.format(amount).toString());
         });
+
         priceDialog.setButton(DialogInterface.BUTTON_NEGATIVE,"CANCEL", (dialog, which) -> {
             dialog.dismiss();
         });
-
-        vnd.setMinValue(0);
-        vnd.setMaxValue(9999);
-
-        String[] cents = setCentsValue();
-        cent.setDisplayedValues(cents);
-        cent.setMinValue(0);
-        cent.setMaxValue(999);
-
-        if(priceValue != -1){
-            vnd.setValue((int) priceValue);
-            cent.setValue(Integer.parseInt(String.valueOf(priceValue).split("\\.")[1]));
-        }
-        else{
-            vnd.setValue(0);
-            cent.setValue(0);
-        }
 
         priceDialog.show();
     }

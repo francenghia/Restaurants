@@ -35,6 +35,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DecimalFormat;
+
 import static com.example.common.Shared.DISHES_PATH;
 import static com.example.common.Shared.EDIT_EXISTING_DISH;
 import static com.example.common.Shared.RESTAURATEUR_INFO;
@@ -59,7 +61,9 @@ class ViewHolderDailyOffer extends RecyclerView.ViewHolder{
     void setData(DishItem current, int position){
         this.dishName.setText(current.getName());
         this.dishDesc.setText(current.getDesc());
-        this.dishPrice.setText(current.getPrice() + " đồng");
+        double amount = current.getPrice();
+        DecimalFormat formatter = new DecimalFormat("#,###");
+        this.dishPrice.setText(formatter.format(amount) + " vnd");
         this.dishQuantity.setText(String.valueOf(current.getQuantity()));
 
         if(current.getPhoto() != null)

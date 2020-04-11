@@ -39,6 +39,7 @@ import static com.example.common.Shared.RESERVATION_PATH;
 import static com.example.common.Shared.RESTAURATEUR_INFO;
 import static com.example.common.Shared.ROOT_UID;
 import static com.example.common.Shared.STATUS_DISCARDED;
+import static com.example.common.Utilities.formatCurrency;
 
 class ViewHolderReservation extends RecyclerView.ViewHolder{
     private View view;
@@ -67,7 +68,7 @@ class ViewHolderReservation extends RecyclerView.ViewHolder{
                     addr.setText(current.getAddrCustomer());
                     cell.setText(dataSnapshot.child("phone").getValue(String.class));
                     time.setText(current.getTime().toString());
-                    price.setText(current.getTotPrice());
+                    price.setText(formatCurrency(current.getTotPrice()));
                     position = pos;
                 }
             }

@@ -12,6 +12,7 @@ import com.example.common.DishItem;
 import com.example.customer.R;
 
 import java.io.InputStream;
+import java.text.DecimalFormat;
 
 public class DailyOfferViewHolder extends RecyclerView.ViewHolder{
     private ImageView dishPhoto;
@@ -29,12 +30,14 @@ public class DailyOfferViewHolder extends RecyclerView.ViewHolder{
 
     }
 
-    public void setData(DishItem current, int position) {
+    public void   setData(DishItem current, int position) {
         InputStream inputStream = null;
 
         this.dishName.setText(current.getName());
         this.dishDesc.setText(current.getDesc());
-        this.dishPrice.setText(current.getPrice() + " vnd");
+        double amount = current.getPrice();
+        DecimalFormat formatter = new DecimalFormat("#,###");
+        this.dishPrice.setText(formatter.format(amount) + " vnd");
         if (current.getPhoto() != null) {
             Glide.with(view.getContext()).load(current.getPhoto()).override(80,80).into(dishPhoto);
         }
