@@ -65,6 +65,36 @@ public class Utilities {
         return hourString + ":" + minString;
     }
 
+    public static String getStringDateFromTimestamp(Long timestamp){
+        Date d = new Date(timestamp);
+        Calendar c = Calendar.getInstance();
+        c.setTime(d);
+
+        int hourValue = c.get(Calendar.HOUR);
+        int minValue =c.get(Calendar.MINUTE);
+        String hourString = Integer.toString(hourValue), minString = Integer.toString(minValue);
+
+        if(hourValue < 10)
+            hourString = "0" + hourValue;
+        if(minValue < 10)
+            minString = "0" + minValue;
+
+        int am_pm = c.get(Calendar.AM_PM);
+        String ampm = "ampm";
+        if (am_pm == 0) {
+            ampm = "AM";
+        } else {
+            ampm = "PM";
+        }
+
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day =c.get(Calendar.DAY_OF_MONTH);
+
+        return hourString + ":" + minString+" "+ampm + " "+day+"/"+(month+1)+"/"+year;
+    }
+
+
     public static Long getDate(int hour, int min, int mode, Long prev) {
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.HOUR_OF_DAY, hour);
