@@ -1,6 +1,5 @@
 package com.example.shipper.Activities;
 
-import android.Manifest;
 import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -8,11 +7,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,12 +28,6 @@ import com.example.shipper.R;
 import com.example.shipper.Services.LocationService;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationCallback;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationResult;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -59,26 +50,19 @@ public class FragmentManager extends AppCompatActivity implements
     private View notificationBadge;
     private Intent serviceIntent;
 
-    private static final String TAG = "LocationService";
-    private FusedLocationProviderClient mFusedLocationClient;
-    private final static long UPDATE_INTERVAL = 4 * 1000;  /* 4 secs */
-    private final static long FASTEST_INTERVAL = 2000; /* 2 sec */
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference mDatabaseRef = database.getReference();
 
     public boolean value;
+    private BottomNavigationView navigation;
     public static final int ERROR_DIALOG_REQUEST = 9001;
     public static final int PERMISSIONS_REQUEST_ENABLE_GPS = 9002;
     public static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 9003;
     private boolean mLocationPermissionGranted = false;
-    private BottomNavigationView navigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment_manager);
 
-        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemReselectedListener);
 
@@ -197,10 +181,6 @@ public class FragmentManager extends AppCompatActivity implements
         if(!isLocationServiceRunning()){
             serviceIntent = new Intent(this, LocationService.class);
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O){
-                //
-                getLocation();
-
-                // Check
                 FragmentManager.this.startForegroundService(serviceIntent);
             }
             else{
@@ -209,49 +189,10 @@ public class FragmentManager extends AppCompatActivity implements
         }
     }
 
-    private void getLocation() {
-
-        // Create the location request to start receiving updates
-        LocationRequest mLocationRequestHighAccuracy = new LocationRequest();
-        mLocationRequestHighAccuracy.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        mLocationRequestHighAccuracy.setInterval(UPDATE_INTERVAL);
-        mLocationRequestHighAccuracy.setFastestInterval(FASTEST_INTERVAL);
-
-        // new Google API SDK v11 uses getFusedLocationProviderClient(this)
-        if (ActivityCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            Log.d(TAG, "getLocation: stopping the location service.");
-            return;
-        }
-
-        Log.d(TAG, "getLocation: getting location information.");
-        mFusedLocationClient.requestLocationUpdates(mLocationRequestHighAccuracy, new LocationCallback() {
-                    @Override
-                    public void onLocationResult(LocationResult locationResult) {
-
-                        Log.d(TAG, "onLocationResult: got location result.");
-
-                        Location location = locationResult.getLastLocation();
-
-                        if (location != null) {
-                            LatLng pos = new LatLng(location.getLatitude(), location.getLongitude());
-                            updateLocationDatabase(location.getLatitude(), location.getLongitude());
-                            Log.d(TAG, "saved location " + location.getLatitude() + "  " + location.getLongitude());
-                        }
-                    }
-                },
-                Looper.myLooper()); // Looper.myLooper tells this to repeat forever until thread is destroyed
-    }
-
-    private void updateLocationDatabase(double latitude, double longitude) {
-        mDatabaseRef.child(SHIPPERS_PATH).child(ROOT_UID).child("shipper_pos").child("latitude").setValue(latitude);
-        mDatabaseRef.child(SHIPPERS_PATH).child(ROOT_UID).child("shipper_pos").child("longitude").setValue(longitude);
-    }
-
     private boolean isLocationServiceRunning() {
         ActivityManager manager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
         for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)){
-            if("com.example.shipper.Services.LocationService".equals(service.service.getClassName())) {
+            if("com.example.rider_map.services.LocationService".equals(service.service.getClassName())) {
                 Log.d("DEBUG", "isLocationServiceRunning: location service is already running.");
                 return true;
             }

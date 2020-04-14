@@ -212,12 +212,19 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
                     shipperName = new HashMap<>();
 
                     for (DataSnapshot d : dataSnapshot.getChildren()) {
-                        if ((boolean) d.child("available").getValue()) {
-                            shipperName.put(d.getKey(), d.child(SHIPPER_INFO).child("name").getValue(String.class));
-                            posMap.put(d.getKey(), d.child("shipper_pos").getValue(Position.class));
-                            distanceMap.put(Distance.distance(latitude, longitude,
-                                    posMap.get(d.getKey()).latitude,
-                                    posMap.get(d.getKey()).longitude), d.getKey());
+                        if(d.exists()) {
+                            Object tempCheckBoolean = d.child("available").getValue();
+                            if(tempCheckBoolean != null){
+                                boolean cstObject= ((Boolean) tempCheckBoolean).booleanValue();
+                                if (cstObject) {
+                                    shipperName.put(d.getKey(), d.child(SHIPPER_INFO).child("name").getValue(String.class));
+                                    posMap.put(d.getKey(), d.child("shipper_pos").getValue(Position.class));
+                                    distanceMap.put(Distance.distance(latitude, longitude,
+                                            posMap.get(d.getKey()).latitude,
+                                            posMap.get(d.getKey()).longitude), d.getKey());
+                                }
+                            }
+
                         }
                     }
 

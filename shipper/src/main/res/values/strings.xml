@@ -8,5 +8,6 @@
     <string name="title_profile">Profile</string>
     <string name="title_dailyoffer">Daily Offer</string>
     <string name="title_reservation">Order</string>
+    <string name="google_maps_key">AIzaSyAD5zLkUN7GmyQlIotnaWlk706jCr1gEKU</string>
 
 </resources>

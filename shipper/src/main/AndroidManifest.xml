@@ -45,6 +45,20 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/path_strings" />
         </provider>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key"/>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <service android:name=".Services.LocationService"
+            android:stopWithTask="true"/>
     </application>
 
 </manifest>
