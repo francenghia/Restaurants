@@ -38,7 +38,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -175,7 +174,7 @@ public class OrdersFragment extends Fragment implements OnMapReadyCallback {
                     orderKey = d.getKey();
                     order = d.getValue(OrderShipperItem.class);
                     setOrderView(view, order);
-                    String restaurantAddress = order.getAddrRestaurant() + ",Torino";
+                    String restaurantAddress = order.getAddrRestaurant();
                     String customerAddress = order.getAddrCustomer();
                     Log.d("QUERY", customerAddress);
 
@@ -209,7 +208,8 @@ public class OrdersFragment extends Fragment implements OnMapReadyCallback {
         r_addr.setText(order.getAddrRestaurant());
         c_addr.setText(order.getAddrCustomer());
         time_text.setText(Utilities.getDateFromTimestamp(order.getTime()));
-        cash_text.setText(order.getTotPrice() + " vnd");
+        String totPrice = Utilities.formatCurrency(order.getTotPrice());
+        cash_text.setText(totPrice + " vnd");
     }
 
     private void deliveredOrder() {
@@ -357,8 +357,6 @@ public class OrdersFragment extends Fragment implements OnMapReadyCallback {
 
                 for(com.google.maps.model.LatLng latLng: decodedPath){
 
-//                        Log.d(TAG, "run: latlng: " + latLng.toString());
-
                     newDecodedPath.add(new LatLng(
                             latLng.lat,
                             latLng.lng
@@ -376,7 +374,7 @@ public class OrdersFragment extends Fragment implements OnMapReadyCallback {
                 }
 
                 polyline.setClickable(true);
-                Marker finalMarker =mMap.addMarker(new MarkerOptions()
+                mMap.addMarker(new MarkerOptions()
                         .position(finalPos)
                         //TODO: FIX NAME
                         .title("NAME")

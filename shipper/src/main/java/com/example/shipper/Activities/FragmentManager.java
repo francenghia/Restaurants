@@ -192,7 +192,7 @@ public class FragmentManager extends AppCompatActivity implements
     private boolean isLocationServiceRunning() {
         ActivityManager manager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
         for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)){
-            if("com.example.rider_map.services.LocationService".equals(service.service.getClassName())) {
+            if("com.example.shipper.services.LocationService".equals(service.service.getClassName())) {
                 Log.d("DEBUG", "isLocationServiceRunning: location service is already running.");
                 return true;
             }
