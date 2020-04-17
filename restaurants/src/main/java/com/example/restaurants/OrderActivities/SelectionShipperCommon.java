@@ -47,7 +47,7 @@ public class SelectionShipperCommon {
         view.findViewById(R.id.button_cancel).setOnClickListener(e -> reservationDialog.dismiss());
 
         reservationDialog.setView(view);
-        reservationDialog.setTitle("Are you sure to select this shipper?\n");
+        reservationDialog.setTitle("Bạn có chắc chắn chọn người giao hàng này không?\n");
 
         reservationDialog.show();
     }
@@ -128,7 +128,7 @@ public class SelectionShipperCommon {
                                             refCustomerOrder.updateChildren(order);
 
                                             reservationDialog.dismiss();
-                                            Toast.makeText(context, "Order assigned to shipper " + finalName, Toast.LENGTH_LONG).show();
+                                            Toast.makeText(context, "Đơn hàng được giao cho người giao hàng " + finalName, Toast.LENGTH_LONG).show();
 
                                         }
                                     }

@@ -252,17 +252,6 @@ public class EditProfileActivity extends AppCompatActivity {
             alertDialog.dismiss();
         });
 
-        view.findViewById(R.id.button_camera).setOnClickListener(v-> {
-            cameraIntent();
-            dialog_open = false;
-            alertDialog.dismiss();
-        });
-
-        view.findViewById(R.id.button_gallery).setOnClickListener(r->{
-            galleryIntent();
-            dialog_open = false;
-            alertDialog.dismiss();
-        });
         alertDialog.setView(view);
         alertDialog.show();
     }

@@ -23,6 +23,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.common.DishItem;
 import com.example.common.OrderItem;
+import com.example.common.Utilities;
 import com.example.restaurants.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -61,7 +62,7 @@ class ViewHolderDailyOfferTiming extends RecyclerView.ViewHolder{
     void setData(DishItem current, int position){
         this.dishName.setText(current.getName());
         this.dishDesc.setText(current.getDesc());
-        this.dishPrice.setText(current.getPrice() + " €");
+        this.dishPrice.setText( Utilities.formatCurrency(current.getPrice()+"")+ " vnd");
         this.dishQuantity.setText(String.valueOf(current.getQuantity()));
 
         if(current.getPhoto() != null)
@@ -227,7 +228,7 @@ public class HomeOptionFragment extends Fragment {
         else
             nextTimeString = nexTime.toString();
 
-        return "Time slot with more orders is: " + bestTime + ":00" + " - " + nextTimeString + ":00";
+        return "Khoảng thời gian có nhiều đơn hàng hơn là từ: " + bestTime + ":00" + " - " + nextTimeString + ":00";
     }
 
     @Override

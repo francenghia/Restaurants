@@ -88,18 +88,18 @@ public class OrderDetailsActivity extends AppCompatActivity {
         TextView tw_orrder_status = ((TextView)findViewById(R.id.order_det_status));
         switch (item.getStatus()){
             case STATUS_UNKNOWN:
-                tw_orrder_status.setText("Order sent");
+                tw_orrder_status.setText("Đang gửi");
                 break;
             case STATUS_DELIVERED:
-                tw_orrder_status.setText("Order delivered");
+                tw_orrder_status.setText("Đã giao hàng");
                 tw_orrder_status.setTextColor(Color.parseColor("#59cc33"));
                 break;
             case STATUS_DISCARDED:
-                tw_orrder_status.setText("Order refused");
+                tw_orrder_status.setText("Đơn hàng bị từ chối");
                 tw_orrder_status.setTextColor(Color.parseColor("#cc3333"));
                 break;
             case STATUS_DELIVERING:
-                tw_orrder_status.setText("Delivering...");
+                tw_orrder_status.setText("Đang giao hàng...");
                 tw_orrder_status.setTextColor(Color.parseColor("#ffb847"));
                 break;
         }

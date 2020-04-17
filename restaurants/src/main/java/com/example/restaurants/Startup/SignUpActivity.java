@@ -316,37 +316,37 @@ public class SignUpActivity extends AppCompatActivity {
         phone = ((EditText) findViewById(R.id.time_text)).getText().toString();
 
         if (mail.trim().length() == 0 || !android.util.Patterns.EMAIL_ADDRESS.matcher(mail).matches()) {
-            errMsg = "Invalid Mail";
+            errMsg = "Nhập mail lại!";
             return false;
         }
 
         if (psw.trim().length() < 6) {
-            errMsg = "Password should be at least 6 characters";
+            errMsg = "Mật khẩu phải hơn 6 kí tự!";
             return false;
         }
 
         if (name.trim().length() == 0) {
-            errMsg = "Fill name";
+            errMsg = "Nhập tên nhà hàng!";
             return false;
         }
 
         if (addr.trim().length() == 0) {
-            errMsg = "Fill address";
+            errMsg = "Nhập địa chỉ!";
             return false;
         }
 
         if (phone.trim().length() != 10) {
-            errMsg = "Invalid phone number";
+            errMsg = "Nhập đúng số điện thoại";
             return false;
         }
 
         if (openingTime.trim().length() == 0) {
-            errMsg = "Fill opening time";
+            errMsg = "Nhập thời gian mở cửa";
             return false;
         }
 
         if (closingTime.trim().length() == 0) {
-            errMsg = "Fill closing time";
+            errMsg = "Nhập thời gian đóng cửa";
             return false;
         }
 

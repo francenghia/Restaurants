@@ -27,7 +27,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:text="Order details"
+            android:text="Chi tiết đặt hàng"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/ordered_list"
             app:layout_constraintEnd_toEndOf="parent"
@@ -129,7 +129,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="32dp"
-                        android:text="Delivery address: "
+                        android:text="Địa chỉ giao hàng: "
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -148,7 +148,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
-                        android:text="Hour: "
+                        android:text="Thời gian: "
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 

@@ -159,32 +159,32 @@ public class UpdateProfileActivity extends AppCompatActivity {
         time = openingTime + " - " + closingTime;
 
         if(name.trim().length() == 0){
-            error_msg = "Fill name";
+            error_msg = "Nhập tên!";
             return false;
         }
 
         if(addr.trim().length() == 0){
-            error_msg = "Fill address";
+            error_msg = "Nhập địa chỉ!";
             return false;
         }
 
         if(mail.trim().length() == 0 || !android.util.Patterns.EMAIL_ADDRESS.matcher(mail).matches()){
-            error_msg = "Invalid mail";
+            error_msg = "Nhập email lại!";
             return false;
         }
 
         if(phone.trim().length() != 10){
-            error_msg = "Invalid phone number";
+            error_msg = "Nhập đúng số điện thoại";
             return false;
         }
 
         if(openingTime.trim().length() == 0){
-            error_msg = "Fill opening time";
+            error_msg = "Nhập thời gian mở cửa";
             return false;
         }
 
         if(closingTime.trim().length() == 0){
-            error_msg = "Fill closing time";
+            error_msg = "Nhập thời gian đóng cửa";
             return false;
         }
 

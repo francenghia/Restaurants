@@ -29,7 +29,7 @@
             android:layout_marginRight="15dp"
             android:gravity="center"
             android:padding="20dp"
-            android:text="Order delivered, rate your experience!"
+            android:text="Đặt giao hàng, đánh giá của bạn!"
             android:textSize="20sp" />
 
         <com.hsalf.smilerating.SmileRating
@@ -54,7 +54,7 @@
             android:layout_marginRight="15dp"
             android:gravity="center"
             android:padding="20dp"
-            android:text="Leave a comment!"
+            android:text="Để lại một bình luận!"
             android:textSize="20sp" />
 
         <EditText

@@ -334,7 +334,7 @@ public class EditOffer extends AppCompatActivity {
                 } else {
                     Log.d("Permission Run Time: ", "Denied");
 
-                    Toast.makeText(getApplicationContext(), "Access to media files denied", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Truy cập vào tập tin phương tiện bị từ chối", Toast.LENGTH_LONG).show();
                 }
                 return;
             }

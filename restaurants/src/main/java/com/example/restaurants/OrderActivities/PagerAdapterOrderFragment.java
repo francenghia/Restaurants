@@ -71,8 +71,8 @@ public class PagerAdapterOrderFragment extends Fragment {
         tab = view.findViewById(R.id.tablayout);
         viewPager = view.findViewById(R.id.view_pager_id);
 
-        tab.addTab(tab.newTab().setText("Pending orders"));
-        tab.addTab(tab.newTab().setText("Accepted orders"));
+        tab.addTab(tab.newTab().setText("Đang cấp đơn đặt hàng"));
+        tab.addTab(tab.newTab().setText("Đơn hàng được chấp nhận"));
         pagerAdapter = new PagerAdapter(getChildFragmentManager(), tab.getTabCount());
         viewPager.setAdapter(pagerAdapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tab));

@@ -72,18 +72,18 @@ public class OrderViewHolder extends RecyclerView.ViewHolder {
         //Set delivery
         switch (current.getStatus()){
             case STATUS_UNKNOWN:
-                delivery.setText("Order sent");
+                delivery.setText("Đang gửi");
                 break;
             case STATUS_DELIVERED:
-                delivery.setText("Order delivered");
+                delivery.setText("Đã giao hàng");
                 delivery.setTextColor(Color.parseColor("#59cc33"));
                 break;
             case STATUS_DISCARDED:
-                delivery.setText("Order refused");
+                delivery.setText("Đơn hàng bị từ chối");
                 delivery.setTextColor(Color.parseColor("#cc3333"));
                 break;
             case STATUS_DELIVERING:
-                delivery.setText("Delivering...");
+                delivery.setText("Đang giao hàng...");
                 delivery.setTextColor(Color.parseColor("#ffb847"));
                 break;
         }

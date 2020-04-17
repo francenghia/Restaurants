@@ -24,7 +24,7 @@ public class UpdatePasswordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_update_password);
 
         final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Updating password...");
+        progressDialog.setTitle("Đang cập nhật...");
 
         findViewById(R.id.text_psw_alert).setVisibility(View.INVISIBLE);
         findViewById(R.id.error_psw).setVisibility(View.INVISIBLE);
