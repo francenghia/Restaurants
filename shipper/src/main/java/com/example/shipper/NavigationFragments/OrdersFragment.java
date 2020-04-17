@@ -127,17 +127,17 @@ public class OrdersFragment extends Fragment implements OnMapReadyCallback {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //TODO: STATUS
                 available = (boolean) dataSnapshot.getValue();
-                if(!available){
+                if(!available && null == order){
                     Button btn = view.findViewById(R.id.accept_button);
-                    btn.setText("Restaurant Reached");
+                    btn.setText("Lấy đơn hàng");
                     TextView text = view.findViewById(R.id.status);
-                    text.setText("Delivering..");
+                    text.setText("Đang giao hàng..");
                 }
                 else{
                     Button btn = view.findViewById(R.id.accept_button);
-                    btn.setText("No pending order");
+                    btn.setText("Không có đơn hàng");
                     TextView text = view.findViewById(R.id.status);
-                    text.setText("Available");
+                    text.setText("Chưa có đơn");
                     cancelOrderView(view);
                 }
             }
@@ -188,7 +188,7 @@ public class OrdersFragment extends Fragment implements OnMapReadyCallback {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
                 cancelOrderView(view);
-                b.setText("No order pending");
+                b.setText("Không có đơn đặt hàng");
                 b.setEnabled(false);
             }
         };
@@ -219,36 +219,38 @@ public class OrdersFragment extends Fragment implements OnMapReadyCallback {
 
 
         view.findViewById(R.id.button_confirm).setOnClickListener(e ->{
+            if(null != order){
+                DatabaseReference query = FirebaseDatabase.getInstance()
+                        .getReference(SHIPPERS_PATH + "/" + ROOT_UID + "/pending/");
+                query.removeValue();
 
-            DatabaseReference query = FirebaseDatabase.getInstance()
-                    .getReference(SHIPPERS_PATH + "/" + ROOT_UID + "/pending/");
-            query.removeValue();
+                DatabaseReference query2 = FirebaseDatabase.getInstance()
+                        .getReference(SHIPPERS_PATH + "/" + ROOT_UID);
 
-            DatabaseReference query2 = FirebaseDatabase.getInstance()
-                    .getReference(SHIPPERS_PATH + "/" + ROOT_UID);
+                Map<String, Object> status = new HashMap<String, Object>();
+                status.put("available", true);
+                query2.updateChildren(status);
 
-            Map<String, Object> status = new HashMap<String, Object>();
-            status.put("available", true);
-            query2.updateChildren(status);
+                //SET STATUS TO CUSTOMER ORDER
+                DatabaseReference refCustomerOrder = FirebaseDatabase.getInstance()
+                        .getReference().child(CUSTOMER_PATH).child(order.getKeyCustomer()).child("orders").child(orderKey);
+                HashMap<String, Object> order_status = new HashMap<>();
+                order_status.put("status", STATUS_DELIVERED);
+                refCustomerOrder.updateChildren(order_status);
+                mMap.clear();
 
-            //SET STATUS TO CUSTOMER ORDER
-            DatabaseReference refCustomerOrder = FirebaseDatabase.getInstance()
-                    .getReference().child(CUSTOMER_PATH).child(order.getKeyCustomer()).child("orders").child(orderKey);
-            HashMap<String, Object> order_status = new HashMap<>();
-            order_status.put("status", STATUS_DELIVERED);
-            refCustomerOrder.updateChildren(order_status);
-            mMap.clear();
+                DatabaseReference query3 = FirebaseDatabase.getInstance()
+                        .getReference(SHIPPERS_PATH + "/" + ROOT_UID).child("delivered");
 
-            DatabaseReference query3 = FirebaseDatabase.getInstance()
-                    .getReference(SHIPPERS_PATH + "/" + ROOT_UID).child("delivered");
+                Map<String,Object> delivered = new HashMap<>();
+                delivered.put(UUID.randomUUID().toString(),distance);
+                query3.updateChildren(delivered);
 
-            Map<String,Object> delivered = new HashMap<>();
-            delivered.put(UUID.randomUUID().toString(),distance);
-            query3.updateChildren(delivered);
-
-            distance = 0L;
+                distance = 0L;
+            }
 
             reservationDialog.dismiss();
+
         });
 
         view.findViewById(R.id.button_cancel).setOnClickListener(e ->{
@@ -256,7 +258,7 @@ public class OrdersFragment extends Fragment implements OnMapReadyCallback {
         });
 
         reservationDialog.setView(view);
-        reservationDialog.setTitle("Order restaurantReached?");
+        reservationDialog.setTitle("Đơn hàng đã lấy?");
 
         reservationDialog.show();
     }
@@ -268,12 +270,13 @@ public class OrdersFragment extends Fragment implements OnMapReadyCallback {
 
         view.findViewById(R.id.button_confirm).setOnClickListener(e ->{
             restaurantReached = true;
-
-            b.setText("Order delivered");
-            String customerAddr = order.getAddrCustomer();
-            mMap.clear();
-            getLastKnownLocation((LatLng) getLocationFromAddress(customerAddr));
-            reservationDialog.dismiss();
+            if(null != order){
+                b.setText("Đã giao hàng");
+                String customerAddr = order.getAddrCustomer();
+                mMap.clear();
+                getLastKnownLocation((LatLng) getLocationFromAddress(customerAddr));
+                reservationDialog.dismiss();
+            }
         });
 
         view.findViewById(R.id.button_cancel).setOnClickListener(e -> {
@@ -281,7 +284,7 @@ public class OrdersFragment extends Fragment implements OnMapReadyCallback {
         });
 
         reservationDialog.setView(view);
-        reservationDialog.setTitle("Restaurant Reached?");
+        reservationDialog.setTitle("Lấy đơn hàng?");
 
         reservationDialog.show();
     }
@@ -444,7 +447,7 @@ public class OrdersFragment extends Fragment implements OnMapReadyCallback {
         });
 
         reservationDialog.setView(view);
-        reservationDialog.setTitle("Confirm Orders?");
+        reservationDialog.setTitle("Xác nhận đơn hàng?");
 
         reservationDialog.show();
     }

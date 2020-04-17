@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         if (auth.getCurrentUser() == null) {
 
             final ProgressDialog progressDialog = new ProgressDialog(this);
-            progressDialog.setTitle("Authenticating...");
+            progressDialog.setTitle("Đang xác thực...");
 
             findViewById(R.id.sign_up).setOnClickListener(e -> {
                 Intent login = new Intent(this, SignUpActivity.class);
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                                     progressDialog.dismiss();
                                     finish();
                                 } else {
-                                    Toast.makeText(MainActivity.this, "Wrong Username or Password", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(MainActivity.this, "Sai tài khoản hoặc mật khẩu!", Toast.LENGTH_LONG).show();
                                 }
                             });
                 } else {
@@ -86,12 +86,12 @@ public class MainActivity extends AppCompatActivity {
         password = ((EditText) findViewById(R.id.password)).getText().toString();
 
         if (email.trim().length() == 0 || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            errMsg = "Invalid Mail";
+            errMsg = "Email không đúng!";
             return false;
         }
 
         if (password.trim().length() == 0) {
-            errMsg = "Fill password";
+            errMsg = "Mật khẩu quá ngắn!";
             return false;
         }
 

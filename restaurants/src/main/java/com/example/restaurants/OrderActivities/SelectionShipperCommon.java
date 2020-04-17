@@ -121,6 +121,10 @@ public class SelectionShipperCommon {
                                                     .getReference().child(CUSTOMER_PATH + "/" + customerId).child("orders").child(orderId);
                                             HashMap<String, Object> order = new HashMap<>();
                                             order.put("status", STATUS_DELIVERING);
+
+                                            // TODO: 4/16/2020
+                                            order.put("shipper", finalKeyShipper);
+
                                             refCustomerOrder.updateChildren(order);
 
                                             reservationDialog.dismiss();

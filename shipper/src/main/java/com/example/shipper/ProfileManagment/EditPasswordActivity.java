@@ -23,7 +23,7 @@ public class EditPasswordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_password);
 
         final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Updating password...");
+        progressDialog.setTitle("Đang cập nhật mật khẩu...");
 
 
         findViewById(R.id.text_psw_alert).setVisibility(View.INVISIBLE);
@@ -71,17 +71,17 @@ public class EditPasswordActivity extends AppCompatActivity {
         confirmPsw = ((EditText)findViewById(R.id.confirm_new_password)).getText().toString();
 
         if(oldPsw.trim().length() == 0){
-            errMsg = "Please insert the old password";
+            errMsg = "Vui lòng nhập mật khẩu cũ!";
             return false;
         }
 
         if(newPsw.trim().length() < 6){
-            errMsg = "Password should be at least 6 characters";
+            errMsg = "Mật khẩu phải có ít nhất 6 ký tự!";
             return false;
         }
 
         if(newPsw.trim().length() != confirmPsw.trim().length()){
-            errMsg = "Passwords must be equal";
+            errMsg = "Mật khẩu phải giống nhau!";
             findViewById(R.id.text_psw_alert).setVisibility(View.VISIBLE);
             findViewById(R.id.error_psw).setVisibility(View.VISIBLE);
             return false;

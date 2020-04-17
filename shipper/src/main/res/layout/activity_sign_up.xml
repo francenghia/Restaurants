@@ -50,7 +50,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="44dp"
             android:ems="10"
-            android:hint="Name"
+            android:hint="Tên"
             android:inputType="textPersonName|textCapWords" />
 
         <EditText
@@ -61,7 +61,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="44dp"
             android:ems="10"
-            android:hint="Surname"
+            android:hint="Họ"
             android:inputType="textPersonName|textCapWords|textMultiLine" />
 
         <EditText
@@ -72,8 +72,8 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="44dp"
             android:ems="10"
-            android:hint="Mail address"
-            android:inputType="textEmailAddress"/>
+            android:hint="Địa chỉ email"
+            android:inputType="textEmailAddress" />
 
         <EditText
             android:id="@+id/phone2"
@@ -83,7 +83,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="44dp"
             android:ems="10"
-            android:hint="Phone"
+            android:hint="Điện thoại"
             android:inputType="phone"/>
 
 
@@ -95,7 +95,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="44dp"
             android:ems="10"
-            android:hint="Password"
+            android:hint="Mật khẩu"
             android:inputType="textPassword" />
 
         <EditText
@@ -106,7 +106,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="44dp"
             android:ems="10"
-            android:hint="Confirm Password"
+            android:hint="Xác nhận lại mật khẩu"
             android:inputType="textPassword"
             />
 

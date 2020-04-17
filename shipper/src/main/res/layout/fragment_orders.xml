@@ -11,6 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!-- TODO: Update blank fragment layout -->
+
+
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
@@ -18,16 +21,13 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="Pending order"
+            android:text="Đơn hàng"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.034"
+            app:layout_constraintHorizontal_bias="0.032"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <!-- TODO: Update blank fragment layout -->
-
 
         <View
             android:id="@+id/view2"
@@ -59,7 +59,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="4dp"
             android:text="Available"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/map"
             app:layout_constraintEnd_toEndOf="parent"
@@ -112,7 +112,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="8dp"
-            android:text="Restaurant Address:"
+            android:text="Địa chỉ nhà hàng:"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -123,7 +123,7 @@
             android:layout_width="121dp"
             android:layout_height="19dp"
             android:layout_marginTop="104dp"
-            android:text="Customer Address:"
+            android:text="Địa chỉ khách hàng:"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.079"
             app:layout_constraintStart_toStartOf="parent"

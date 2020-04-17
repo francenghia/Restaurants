@@ -178,27 +178,27 @@ public class SignUpActivity extends AppCompatActivity {
         psw_confirm = ((EditText) findViewById(R.id.psw_confirm)).getText().toString();
 
         if (name.trim().length() == 0) {
-            error_msg = "Insert name";
+            error_msg = "Nhập vào tên!";
             return false;
         }
 
         if (surname.trim().length() == 0) {
-            error_msg = "Insert address";
+            error_msg = "Nhập địa chỉ!";
             return false;
         }
 
         if (mail.trim().length() == 0 || !android.util.Patterns.EMAIL_ADDRESS.matcher(mail).matches()) {
-            error_msg = "Insert e-mail";
+            error_msg = "Nhập email!";
             return false;
         }
 
         if (phone.trim().length() == 0) {
-            error_msg = "Insert phone number";
+            error_msg = "Nhập số điện thoại!";
             return false;
         }
 
         if (psw.compareTo(psw_confirm) != 0) {
-            error_msg = "Passwords don't match";
+            error_msg = "Mật khẩu không khớp! Nhập lại.";
             return false;
         }
 
@@ -353,7 +353,7 @@ public class SignUpActivity extends AppCompatActivity {
                 } else {
                     Log.d("Permission Run Time: ", "Denied");
 
-                    Toast.makeText(getApplicationContext(), "Access to media files denied", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Truy cập vào tập tin phương tiện bị từ chối", Toast.LENGTH_LONG).show();
                 }
                 return;
             }
