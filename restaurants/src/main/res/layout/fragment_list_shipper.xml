@@ -8,6 +8,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_rider_recyclerview"
         android:layout_width="match_parent"
+        android:textColor="#000"
         android:layout_height="match_parent" />
+
 
 </FrameLayout>

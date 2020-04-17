@@ -33,6 +33,7 @@
         android:layout_marginTop="22dp"
         android:layout_marginEnd="8dp"
         android:text="TextView"
+        android:textColor="#000"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/order_det_date"
         app:layout_constraintStart_toEndOf="@+id/order_det_image"
@@ -45,6 +46,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Total: "
+        android:textColor="#000"
 
         app:layout_constraintStart_toEndOf="@+id/order_det_image"
         app:layout_constraintTop_toBottomOf="@+id/order_res_det_name" />
@@ -56,6 +58,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
+        android:textColor="#000"
         android:text="Delivery status: "
 
         app:layout_constraintBottom_toBottomOf="parent"
@@ -71,6 +74,7 @@
         android:layout_marginEnd="12dp"
         android:gravity="end"
         android:text="TextView"
+        android:textColor="#000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -81,6 +85,7 @@
         android:layout_marginStart="2dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:textColor="#000"
         android:text="TextView"
 
         app:layout_constraintEnd_toEndOf="parent"
@@ -96,6 +101,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="TextView"
+        android:textColor="#000"
 
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

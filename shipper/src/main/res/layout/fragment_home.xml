@@ -42,7 +42,9 @@
             android:layout_weight="1"
             android:text="Khoảng cách:"
             android:textSize="24sp"
+            android:textColor="#000"
             android:textStyle="bold" />
+
 
         <Button
             android:id="@+id/button_distance"
