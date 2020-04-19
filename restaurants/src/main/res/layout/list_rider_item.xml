@@ -20,6 +20,7 @@
         <TextView
             android:id="@+id/name_rider"
             android:layout_width="269dp"
+            android:textColor="#000"
             android:layout_height="25dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
