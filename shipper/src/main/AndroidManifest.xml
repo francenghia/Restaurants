@@ -28,13 +28,15 @@
         <activity android:name=".ProfileManagment.EditProfileActivity" />
         <activity android:name=".ProfileManagment.SignUpActivity" />
         <activity android:name=".Activities.FragmentManager" />
-        <activity android:name=".Activities.SplashActivity" />
-        <activity android:name=".Activities.MainActivity">
+        <activity android:name=".Activities.SplashActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".Activities.MainActivity">
+
         </activity>
         <provider
             android:name="androidx.core.content.FileProvider"

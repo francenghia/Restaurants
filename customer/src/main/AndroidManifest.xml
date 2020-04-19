@@ -18,18 +18,21 @@
         android:roundIcon="@mipmap/ic_launcher_fastfood_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.OrderDetailsActivity"></activity>
+        <activity android:name=".Activities.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activities.OrderDetailsActivity" />
         <activity android:name=".Activities.ConfirmActivity" />
         <activity android:name=".Activities.TabApp" />
         <activity android:name=".Activities.EditProfileActivity" />
         <activity android:name=".Activities.HomeActivity" />
         <activity android:name=".Activities.SignUpActivity" />
         <activity android:name=".Activities.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <provider

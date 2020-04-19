@@ -26,13 +26,15 @@
         <activity
             android:name=".Startup.SignUpActivity"
             android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity android:name=".Startup.SplashScreenActivity" />
-        <activity android:name=".Startup.MainActivity">
+        <activity android:name=".Startup.SplashScreenActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".Startup.MainActivity">
+
         </activity>
 
         <meta-data

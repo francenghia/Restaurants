@@ -1,4 +1,4 @@
-package com.example.shipper.Activities;
+package com.example.customer.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.shipper.R;
+import com.example.customer.R;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -44,6 +44,6 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(mIntent);
                 finish();
             }
-        },3000);
+        },3500);
     }
 }
