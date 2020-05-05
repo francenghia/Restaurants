@@ -219,9 +219,12 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
                                 if (cstObject) {
                                     shipperName.put(d.getKey(), d.child(SHIPPER_INFO).child("name").getValue(String.class));
                                     posMap.put(d.getKey(), d.child("shipper_pos").getValue(Position.class));
-                                    distanceMap.put(Distance.distance(latitude, longitude,
-                                            posMap.get(d.getKey()).latitude,
-                                            posMap.get(d.getKey()).longitude), d.getKey());
+                                    if(posMap.get(d.getKey()) != null){
+                                        distanceMap.put(Distance.distance(latitude, longitude,
+                                                posMap.get(d.getKey()).latitude,
+                                                posMap.get(d.getKey()).longitude), d.getKey());
+                                    }
+
                                 }
                             }
 
