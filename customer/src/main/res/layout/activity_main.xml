@@ -18,7 +18,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="80dp"
             android:layout_marginEnd="16dp"
-            android:src="@drawable/logo"
+            android:src="@drawable/fastfood"
             app:civ_border_color="#FFf"
             app:civ_border_width="2dp" />
 
@@ -41,7 +41,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:ems="10"
-            android:hint="Password"
+            android:hint="Mật khẩu"
             android:inputType="textPassword"/>
 
 
@@ -54,7 +54,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:backgroundTint="#fff"
-            android:text="Log in"
+            android:text="Đăng nhập"
             android:textColor="@color/colorPrimary" />
 
         <Button
@@ -65,7 +65,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:backgroundTint="@color/colorPrimary"
-            android:text="Sign up"
+            android:text="Đăng kí"
             android:textColor="#fff" />
     </LinearLayout>
 
